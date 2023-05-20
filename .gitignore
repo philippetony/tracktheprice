@@ -1,4 +1,6 @@
 data/
+input/
+temp/
 .credentials.json
 .vscode
 
