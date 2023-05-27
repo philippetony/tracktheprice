@@ -16,6 +16,12 @@ with Session(engine) as session:
         for article in ticket.prices:
             if article.article_name is None:
                 print(f"Issue in ticket {ticket}, {article} has no name")
+
+    categories = { article.article_name : article.category for ticket in tickets for article in ticket.prices if article.category is not None}
+    for ticket in tickets:
+        for article in ticket.prices:
+            if article.article_name in categories:
+                article.category = categories[article.article_name]
     # print(tickets)
     session.add_all(tickets)
     session.commit()

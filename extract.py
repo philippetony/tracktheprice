@@ -22,7 +22,7 @@ def extract_systeme_u(target):
                 parsed_ticket.store_city = " ".join([x.strip() for x in lines[:4]])
                 current_category = None
                 for line_number, line in enumerate(lines):
-                    if match := re.match(">>>> (.*)", line):
+                    if match := re.match(">>>> (.*)", line.strip()):
                         current_category = match.group(1)
                     if match := re.match(single_line_systeme_u_pattern, line):
                         fusion_groups = [x.strip() for x in match.groups()]
