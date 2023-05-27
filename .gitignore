@@ -3,5 +3,5 @@ input/
 temp/
 .credentials.json
 .vscode
-
+tracktheprice.db
 __pycache__/
