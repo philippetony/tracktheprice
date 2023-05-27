@@ -21,8 +21,10 @@ def main():
     mail.list()
     # Out: list of "folders" aka labels in gmail.
     mail.select()  # connect to inbox.
-    result, data = mail.search(None, '(SINCE "'+(datetime.date.today()-datetime.timedelta(365)
-                                                 ).strftime('%d-%b-%Y')+'")', '(FROM ticket-caisse@e-ticket.systeme-u.fr)')
+    # mail.select("laposte")  # using a label.
+    # result, data = mail.search(None, '(SINCE "'+(datetime.date.today()-datetime.timedelta(365*3)
+    #                                              ).strftime('%d-%b-%Y')+'")', '(FROM ticket-caisse@e-ticket.systeme-u.fr)')
+    result, data = mail.search(None, '(FROM ticket-caisse@systeme-u.fr)')
 
     ids = data[0]
     len(ids)
@@ -50,7 +52,7 @@ def main():
                 filename = match.group()
                 # print(attachment.items())
                 payload = attachment.get_content()
-                with open(f"data/{filename}", "wb") as f:
+                with open(f"input/u/{filename}", "wb") as f:
                     f.write(payload)
 
         # body = body.partition("--")[0].partition("Best Regards")[0].replace("\r\n","\n")
