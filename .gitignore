@@ -5,3 +5,5 @@ temp/
 .vscode
 tracktheprice.db
 __pycache__/
+*.png
+*.html
