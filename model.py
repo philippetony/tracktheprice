@@ -14,17 +14,19 @@ class ArticlePrice(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     article_name: Mapped[str] = mapped_column(String())
     price: Mapped[float] = mapped_column(Float())
+    category: Mapped[str] = mapped_column(String(), nullable=True)
     ticket_id: Mapped[int] = mapped_column(ForeignKey('ticket.id'))
 
     @staticmethod
-    def of(name, price):
+    def of(name, price, category = None):
         it = ArticlePrice()
         it.article_name = name
         it.price = price
+        it.category = category
         return it
     
     def __repr__(self):
-        return f"{self.article_name or '':<30}{self.price or '':>6}"
+        return f"{self.article_name or '':<30}{self.price or '':>6}{self.category or '':<20}"
 
 
 class Ticket(Base):
