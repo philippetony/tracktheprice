@@ -2,8 +2,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from db import engine
 from model import Ticket, ArticlePrice
-from extract import extract_lidl, extract_systeme_u, temp_path
-from typing import List
 
 
 with Session(engine) as session:

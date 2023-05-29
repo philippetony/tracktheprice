@@ -13,7 +13,7 @@ with Session(engine) as session:
     cnt = session.query(func.count().label("c"), ArticlePrice.article_name).select_from(
         ArticlePrice).group_by(ArticlePrice.article_name).cte()
 
-    intersting_articles = session.query(cnt.c.article_name).filter(cnt.c.c > 4).order_by(cnt.c.c.desc()).all()
+    intersting_articles = session.query(cnt.c.article_name).filter(cnt.c.c > 2).order_by(cnt.c.c.desc()).all()
 
     forbidden_list = ['Poire', 'Tomate', 'Nectarine', 'Jambon sup']
 
@@ -39,17 +39,6 @@ with Session(engine) as session:
         groups.setdefault(category, {})
         groups[category].setdefault(article_name, [])
         groups[category][article_name].append(price)
-
-
-    # print(len(list(groups)))
-
-    # for article_name, article_prices in groups:
-    #     prices = list(article_prices)
-    #     if len(prices) <=1:
-    #         continue
-    #     print(f"{article_name=} {(prices)}")
-
-
     
     for category, category_articles in groups.items():
         fig, ax = pyplot.subplots()
@@ -60,12 +49,9 @@ with Session(engine) as session:
             print(prices)
             if len(prices) < 1:
                 continue
-            # print(f"{article_name=} {(prices)}")
-            # print(f"{article_name=}", [it[0] for it in prices], [it[1] for it in prices])
             pyplot.plot([it[0] for it in prices], [it[1] for it in prices], label=article_name, marker= next(marker))
 
         box = ax.get_position()
         ax.set_position([box.x0, box.y0, box.width, box.height*0.8])
         pyplot.legend(fontsize="xx-small", ncols=4, loc="upper right", bbox_to_anchor=(1, 1.35))
         pyplot.savefig('plot%s.png' % ("_"+re.sub("[^\w ]+","_",category if category is not None else "")))
-    # pyplot.show()
