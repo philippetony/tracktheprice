@@ -5,7 +5,7 @@ from model import Ticket, ArticlePrice
 import datetime
 
 temp_path = Path('temp')
-single_line_systeme_u_pattern = ' *([A-Z0-9 ./()&%-]+) +([0-9,]+) € +[0-9]+ *$'
+single_line_systeme_u_pattern = ' *([A-Z0-9 .,/()&%-]+) +([0-9,]+) € +[0-9]+ *$'
 multi_line_systeme_u_pattern = ' *(\d+) +x +([0-9,]+) € +([0-9,]+) € +[0-9]+ *$'
 
 single_line_lidl_pattern = ' *([\w\d ./()&%-]+) +([0-9,]+) [xX]+ ([0-9]+) ([0-9,]+) [AB] *$'
