@@ -7,3 +7,5 @@ tracktheprice.db
 __pycache__/
 *.png
 *.html
+*.zip
+*.csv
