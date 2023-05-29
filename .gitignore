@@ -11,3 +11,5 @@ node_modules/
 .sass-cache
 *.mp3
 .credentials.json
+.ipynb_checkpoints/
+input/u/*.pdf
