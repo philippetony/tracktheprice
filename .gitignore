@@ -13,3 +13,5 @@ node_modules/
 .credentials.json
 .ipynb_checkpoints/
 input/u/*.pdf
+
+articles.csv
