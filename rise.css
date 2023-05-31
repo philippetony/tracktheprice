@@ -583,3 +583,14 @@ img.avatar {
     vertical-align: middle;
     margin: 0 1em;
 }
+.vertical-center > div {
+
+}
+
+.vertical-center{
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
